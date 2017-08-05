@@ -52,4 +52,8 @@ window.onload = function() {
 
 const userClick = () => {
   console.log('click');
+  store.dispatch({ type: 'SWITCH'} );
+  console.log(store.getState());
 }
+
+store.subscribe(render);
