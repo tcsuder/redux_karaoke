@@ -42,6 +42,14 @@ const store = createStore(phraseChanger);
 console.log(store);
 console.log(store.getState());
 
+const render = () => {
+  document.getElementById('words').innerHTML = store.getState().currentPhrase;
+}
+
+window.onload = function() {
+  render();
+}
+
 const userClick = () => {
   console.log('click');
 }
