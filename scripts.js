@@ -51,9 +51,12 @@ window.onload = function() {
 }
 
 const userClick = () => {
-  console.log('click');
-  store.dispatch({ type: 'SWITCH'} );
-  console.log(store.getState());
+  const checkState = store.getState();
+  if (checkState.arrayPosition === checkState.chorusArray.length - 1) {
+    store.dispatch({ type: 'RESTART' } );
+  } else {
+    store.dispatch({ type: 'SWITCH' } );
+  }
 }
 
 store.subscribe(render);
