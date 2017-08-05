@@ -12,6 +12,31 @@ const initialState = {
 }
 console.log(initialState);
 
+const phraseChanger = (state = initialState, action) => {
+  let newState;
+  switch (action.type) {
+    case 'SWITCH':
+      let newPosition = state.arrayPosition + 1;
+      newState = {
+        chorusString: state.chorusString,
+        chorusArray: state.chorusArray,
+        arrayPosition: newPosition,
+        currentPhrase: state.chorusArray[newPosition]
+      }
+      return newState;
+    case 'RESTART':
+      newState = {
+        chorusString: state.chorusString,
+        chorusArray: state.chorusArray,
+        arrayPosition: 0,
+        currentPhrase: state.chorusArray[0]
+      }
+      return newState;
+    default:
+      return state;
+  }
+}
+
 const { createStore } = Redux;
 const store = createStore(phraseChanger);
 console.log(store);
